@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>AEC Invoice App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    label { display: inline-block; width: 100px; }
+    input, button { margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>AEC Consultancy Invoice Calculator</h1>
+
+  <div>
+    <label>Client Name:</label><input id="clientName" type="text" /><br/>
+    <label>Product Name:</label><input id="productName" type="text" />
+    <label>Quantity:</label><input id="qty" type="number" min="1" value="1" />
+    <label>Unit Price:</label><input id="unitPrice" type="number" min="0" value="0" step="1000" />
+    <button id="addItem">Add Item</button>
+  </div>
+
+  <div>
+    <label>Discount (%):</label><input id="discount" type="number" min="0" max="100" value="0" /><br/>
+    <label>Tax (%):</label><input id="tax" type="number" min="0" max="100" value="10" /><br/>
+  </div>
+
+  <h2>Items</h2>
+  <table id="itemsTable">
+    <thead>
+      <tr><th>Product</th><th>Qty</th><th>Unit Price</th><th>Subtotal</th><th>Action</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3>Totals</h3>
+  <div id="totals"></div>
+
+  <button id="generatePDF">Generate PDF</button>
+  <button id="copyInvoice">Copy Invoice Text</button>
+
+  <h2>Invoice History</h2>
+  <table id="historyTable">
+    <thead>
+      <tr><th>ID</th><th>Client</th><th>Date</th><th>Total</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
